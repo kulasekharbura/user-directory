@@ -72,9 +72,15 @@ function App() {
 
       {/* Search & Sort Controls */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <label htmlFor="search" className="sr-only">
+          Search users by name or email
+        </label>
         <input
           type="text"
+          id="search"
+          name="search"
           placeholder="Search by name or email..."
+          autoComplete="off"
           className="w-full md:w-1/2 p-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
