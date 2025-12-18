@@ -14,7 +14,7 @@ function App() {
   // Fetch Users
   useEffect(() => {
     const fetchUsers = async () => {
-      // Check LocalStorage first (Bonus Requirement)
+      // Check LocalStorage
       const storedUsers = localStorage.getItem("directoryUsers");
       if (storedUsers) {
         setUsers(JSON.parse(storedUsers));
@@ -54,7 +54,7 @@ function App() {
       user.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Sort Users (Bonus Requirement)
+  // Sort Users
   const sortedUsers = [...filteredUsers].sort((a, b) => {
     return sortAsc
       ? a.name.localeCompare(b.name)

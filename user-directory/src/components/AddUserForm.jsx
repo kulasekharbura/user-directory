@@ -41,7 +41,6 @@ const AddUserForm = ({ onAddUser }) => {
       <h2 className="text-xl font-bold mb-4">Add New User</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          {/* Added name="name" and id="name" */}
           <input
             type="text"
             name="name"
@@ -59,7 +58,6 @@ const AddUserForm = ({ onAddUser }) => {
           )}
         </div>
         <div>
-          {/* Added name="email" and id="email" */}
           <input
             type="text"
             name="email"
@@ -79,7 +77,6 @@ const AddUserForm = ({ onAddUser }) => {
           )}
         </div>
         <div>
-          {/* Added name="phone" and id="phone" */}
           <input
             type="text"
             name="phone"
