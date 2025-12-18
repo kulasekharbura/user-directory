@@ -1,93 +1,130 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
 # User Directory Application
 
-A scalable frontend application built with React (Vite) and Tailwind CSS. This application fetches user data from an external API, allows for real-time searching and sorting, and provides a detailed view for each user. It also includes a frontend-only "Add User" feature with validation.
+A scalable and responsive frontend application built using **React (Vite)** and **Tailwind CSS**. The application fetches user data from an external API, supports real-time search and sorting, displays detailed user information, and includes a frontend-only user creation feature with form validation and persistence.
+
+---
 
 ## 🛠 Technology Stack
 
-- [cite_start]**Framework:** React (Vite) [cite: 6]
-- [cite_start]**Language:** JavaScript (ES6+) [cite: 7]
-- [cite_start]**Styling:** Tailwind CSS [cite: 8]
-- [cite_start]**State Management:** React Hooks (`useState`, `useEffect`) [cite: 3, 34]
+- **Framework:** React (Vite)
+- **Language:** JavaScript (ES6+)
+- **Styling:** Tailwind CSS
+- **State Management:** React Hooks (`useState`, `useEffect`)
+- **Data Persistence:** Browser `localStorage`
 
-## ✨ Features Implemented
+---
 
-This project fulfills all core requirements and several bonus tasks:
+## ✨ Features
 
 ### Core Functionality
 
-- [cite_start]**User List:** Fetches and displays users from `jsonplaceholder.typicode.com` on page load[cite: 11, 15].
-- [cite_start]**Loading/Error States:** Displays a loading indicator while fetching and error messages if the API fails[cite: 17].
-- [cite_start]**Real-time Search:** Filters users by **Name** or **Email** instantly as you type[cite: 20, 21].
-- [cite_start]**User Details:** A modal popup displays detailed information (Address, Company, Website) when a user card is clicked[cite: 23].
-- **Add User (Frontend):** A validated form to add new users. [cite_start]It includes error handling for required fields and email format validation[cite: 24, 25, 26, 27].
-- [cite_start]**Responsive Design:** Fully responsive layout for mobile and desktop using Tailwind CSS[cite: 31].
+- **User List Fetching**
+  Fetches and displays user data from `https://jsonplaceholder.typicode.com/users` on initial load.
 
-### Bonus Tasks Completed
+- **Loading & Error Handling**
+  Displays a loading indicator during API calls and user-friendly error messages on failure.
 
-- [cite_start]**Sorting:** Users can be sorted alphabetically (A-Z and Z-A)[cite: 34].
-- [cite_start]**Persistence:** Newly added users and fetched data are saved to `localStorage`, so data persists after a page refresh[cite: 34].
-- [cite_start]**Reusable Components:** The UI is broken down into clean, reusable components (`UserCard`, `UserModal`, `AddUserForm`)[cite: 34].
+- **Real-Time Search**
+  Instantly filters users by **name** or **email** as the user types.
 
-## 🚀 Setup & Run Instructions
+- **User Details Modal**
+  Clicking on a user card opens a modal showing detailed information including address, company, and website.
 
-[cite_start]Follow these steps to run the project locally[cite: 38, 39]:
+- **Add User (Frontend Only)**
+  Includes a form to add new users with:
 
-1.  **Clone the repository:**
+  - Required field validation
+  - Email format validation
+  - Graceful error handling
 
-    ```bash
-    git clone <your-repo-link-here>
-    cd user-directory
-    ```
+- **Responsive Design**
+  Fully responsive UI optimized for both mobile and desktop devices using Tailwind CSS utility classes.
 
-2.  **Install Dependencies:**
+---
 
-    ```bash
-    npm install
-    ```
+### Bonus Features
 
-3.  **Run the Development Server:**
+- **Sorting**
+  Users can be sorted alphabetically in both **A–Z** and **Z–A** order.
 
-    ```bash
-    npm run dev
-    ```
+- **Data Persistence**
+  User data (both fetched and newly added) is stored in `localStorage`, ensuring persistence across page reloads.
 
-4.  **Open in Browser:**
-    Click the local URL shown in the terminal (usually `http://localhost:5173`) to view the app.
+- **Reusable Component Architecture**
+  The application is structured using modular and reusable components such as:
 
-## 📝 Assumptions Made
+  - `UserCard`
+  - `UserModal`
+  - `AddUserForm`
 
-[cite_start]Per the assignment guidelines, the following assumptions were made during development[cite: 39]:
+---
 
-1.  **Data Mocking for New Users:** Since the backend API does not actually persist new data, and the `UserModal` component expects nested objects (like `address` and `company`), I auto-generate mock data for these fields when a new user is created. This prevents the application from crashing when trying to view details for a locally added user.
-2.  **Persistence Strategy:** `localStorage` is used to simulate backend persistence. On the initial load, the app checks local storage; if empty, it fetches from the API. This ensures that "added" users remain visible even after refreshing the page.
-3.  **ID Generation:** Simple timestamp-based ID generation (`Date.now()`) is used for new users to ensure unique keys for React rendering.
+## 🚀 Getting Started
+
+Follow the steps below to run the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd user-directory
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the Development Server
+
+```bash
+npm run dev
+```
+
+### 4. Open in Browser
+
+Navigate to the local URL shown in the terminal (typically `http://localhost:5173`).
+
+---
+
+## 📝 Design Decisions & Assumptions
+
+- **Frontend-Only User Creation**
+  Since the external API does not persist new data, newly added users are handled entirely on the frontend.
+
+- **Mocked Nested Data**
+  Components such as the user detail modal expect nested fields (`address`, `company`). These are auto-generated for newly added users to maintain data consistency and prevent runtime errors.
+
+- **Persistence Strategy**
+  `localStorage` is used to simulate backend persistence. On initial load, the application checks for stored data before making an API request.
+
+- **ID Generation**
+  New users are assigned unique IDs using `Date.now()` to ensure stable React key usage.
+
+---
 
 ## 📂 Project Structure
 
 ```text
 src/
 ├── components/
-│   ├── AddUserForm.jsx  # Form with validation logic
-│   ├── UserCard.jsx     # Individual user display component
-│   └── UserModal.jsx    # Detailed view popup
-├── App.jsx              # Main logic (State, Search, Sort, Routing)
-├── index.css            # Tailwind directives
-└── main.jsx             # Entry point
+│   ├── AddUserForm.jsx   # User creation form with validation
+│   ├── UserCard.jsx      # Individual user display component
+│   └── UserModal.jsx     # Modal for detailed user information
+├── App.jsx               # Core application logic (state, search, sort)
+├── index.css             # Tailwind CSS directives
+└── main.jsx              # Application entry point
 ```
+
+---
+
+## 📌 Summary
+
+This project demonstrates:
+
+- Clean React component design
+- Effective state management with hooks
+- Responsive UI development using Tailwind CSS
+- Practical handling of API limitations
+- Scalable and maintainable frontend architecture
