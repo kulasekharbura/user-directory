@@ -108,7 +108,7 @@ The application fetches user data from an external API, displays it in a clean a
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/kulasekharbura/user-directory.git
    cd user-directory
    ```
 
