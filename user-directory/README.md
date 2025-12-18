@@ -1,130 +1,143 @@
 # User Directory Application
 
-A scalable and responsive frontend application built using **React (Vite)** and **Tailwind CSS**. The application fetches user data from an external API, supports real-time search and sorting, displays detailed user information, and includes a frontend-only user creation feature with form validation and persistence.
+## 🚀 Live Demo
+
+**Check out the live application here:** [https://user-directory-rosy.vercel.app/](https://user-directory-rosy.vercel.app/)
 
 ---
 
-## 🛠 Technology Stack
+## Overview
+
+This project is a **User Directory Application** built as part of a frontend assignment to demonstrate proficiency in modern frontend development practices.
+The application fetches user data from an external API, displays it in a clean and responsive UI, and allows users to search, view details, and add new users using frontend-only logic.
+
+---
+
+## Technology Stack
 
 - **Framework:** React (Vite)
 - **Language:** JavaScript (ES6+)
 - **Styling:** Tailwind CSS
 - **State Management:** React Hooks (`useState`, `useEffect`)
-- **Data Persistence:** Browser `localStorage`
+- **Persistence:** Browser `localStorage`
 
 ---
 
-## ✨ Features
+## Features Implemented
 
-### Core Functionality
+### 1. User List Page
 
-- **User List Fetching**
-  Fetches and displays user data from `https://jsonplaceholder.typicode.com/users` on initial load.
+- Fetches user data from `https://jsonplaceholder.typicode.com/users` on initial page load.
+- Displays the following fields for each user:
 
-- **Loading & Error Handling**
-  Displays a loading indicator during API calls and user-friendly error messages on failure.
+  - Name
+  - Email
+  - Phone
 
-- **Real-Time Search**
-  Instantly filters users by **name** or **email** as the user types.
+- Includes:
 
-- **User Details Modal**
-  Clicking on a user card opens a modal showing detailed information including address, company, and website.
-
-- **Add User (Frontend Only)**
-  Includes a form to add new users with:
-
-  - Required field validation
-  - Email format validation
-  - Graceful error handling
-
-- **Responsive Design**
-  Fully responsive UI optimized for both mobile and desktop devices using Tailwind CSS utility classes.
+  - Loading indicator while data is being fetched
+  - Error message if the API request fails
 
 ---
 
-### Bonus Features
+### 2. Search Users
 
-- **Sorting**
-  Users can be sorted alphabetically in both **A–Z** and **Z–A** order.
+- Provides a search input field.
+- Filters users in **real time** based on:
 
-- **Data Persistence**
-  User data (both fetched and newly added) is stored in `localStorage`, ensuring persistence across page reloads.
-
-- **Reusable Component Architecture**
-  The application is structured using modular and reusable components such as:
-
-  - `UserCard`
-  - `UserModal`
-  - `AddUserForm`
+  - Name
+  - Email
 
 ---
 
-## 🚀 Getting Started
+### 3. User Details View
 
-Follow the steps below to run the project locally.
+- Clicking on a user opens a detailed view implemented as a **modal**.
+- Displays additional user information:
 
-### 1. Clone the Repository
-
-```bash
-git clone <repository-url>
-cd user-directory
-```
-
-### 2. Install Dependencies
-
-```bash
-npm install
-```
-
-### 3. Start the Development Server
-
-```bash
-npm run dev
-```
-
-### 4. Open in Browser
-
-Navigate to the local URL shown in the terminal (typically `http://localhost:5173`).
+  - Address
+  - Company name
+  - Website
 
 ---
 
-## 📝 Design Decisions & Assumptions
+### 4. Add New User (Frontend Only)
 
-- **Frontend-Only User Creation**
-  Since the external API does not persist new data, newly added users are handled entirely on the frontend.
+- Includes a form to add a new user.
+- Fields:
 
-- **Mocked Nested Data**
-  Components such as the user detail modal expect nested fields (`address`, `company`). These are auto-generated for newly added users to maintain data consistency and prevent runtime errors.
+  - Name (required)
+  - Email (required, valid format)
+  - Phone (required)
 
-- **Persistence Strategy**
-  `localStorage` is used to simulate backend persistence. On initial load, the application checks for stored data before making an API request.
+- Client-side validation with clear error messages.
+- On successful submission:
 
-- **ID Generation**
-  New users are assigned unique IDs using `Date.now()` to ensure stable React key usage.
+  - User is added to the list
+  - Form is reset
+
+- No backend persistence (as per assignment requirement).
 
 ---
 
-## 📂 Project Structure
+## Bonus Tasks Completed
+
+- **Alphabetical Sorting:** Users can be sorted A–Z and Z–A.
+- **Reusable Components:** UI is broken into reusable components (`UserCard`, `UserModal`, `AddUserForm`).
+- **React Hooks:** Proper usage of `useState` and `useEffect`.
+- **Persistence:** Users (fetched and added) are stored in `localStorage` to persist data across refreshes.
+
+---
+
+## Assumptions Made
+
+1. **Frontend-Only Persistence**
+   Since the API does not support POST persistence, `localStorage` is used to simulate data retention.
+
+2. **Mocked Nested Data for Added Users**
+   Newly added users are assigned mock `address` and `company` objects to maintain compatibility with the user details view.
+
+3. **ID Generation**
+   Unique IDs for new users are generated using `Date.now()` to ensure stable React keys.
+
+---
+
+## Setup Instructions
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd user-directory
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the project**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the application**
+   Open the local URL shown in the terminal (typically `http://localhost:5173`).
+
+---
+
+## Project Structure
 
 ```text
 src/
 ├── components/
-│   ├── AddUserForm.jsx   # User creation form with validation
-│   ├── UserCard.jsx      # Individual user display component
-│   └── UserModal.jsx     # Modal for detailed user information
-├── App.jsx               # Core application logic (state, search, sort)
+│   ├── AddUserForm.jsx   # Form with validation logic
+│   ├── UserCard.jsx      # User list item
+│   └── UserModal.jsx    # Detailed user view
+├── App.jsx               # Main application logic
 ├── index.css             # Tailwind CSS directives
-└── main.jsx              # Application entry point
+└── main.jsx              # Entry point
 ```
-
----
-
-## 📌 Summary
-
-This project demonstrates:
-
-- Clean React component design
-- Effective state management with hooks
-- Responsive UI development using Tailwind CSS
-- Practical handling of API limitations
-- Scalable and maintainable frontend architecture
